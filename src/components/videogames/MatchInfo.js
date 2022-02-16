@@ -27,8 +27,7 @@ class MatchInfo extends React.Component {
         }
         
         
-        render() {
-            console.log(this.state.match);
+    render() {
         if ("match" in this.state && "team1" in this.state && "team2" in this.state) {
             return (
                 <>
@@ -38,15 +37,15 @@ class MatchInfo extends React.Component {
                             <li className="crumb"><Link to={`/videogames/${this.state.match.videogame.id}`}>{this.state.match.videogame.name}</Link></li>
                             <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}`}>{this.state.match.league.name}</Link></li>
                             {
-                                this.state.match.status === 'not_stated' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/upcoming`}>Matchs à venir</Link></li> : ''
+                                this.state.match.status === 'not_started' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/upcoming`} state={{ nameLeague: this.state.match.league.name, nameVideogame: this.state.match.videogame.name, idVideogame: this.state.match.videogame.id }}>Matchs à venir</Link></li> : ''
                             }
 
                             {
-                                this.state.match.status === 'started' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/running`}>Matchs en cours</Link></li> : ''
+                                this.state.match.status === 'started' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/running`} state={{ nameLeague: this.state.match.league.name, nameVideogame: this.state.match.videogame.name, idVideogame: this.state.match.videogame.id }}>Matchs en cours</Link></li> : ''
                             }
                                 
                             {
-                                this.state.match.status === 'finished' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/past`}>Matchs terminés</Link></li> : ''
+                                this.state.match.status === 'finished' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/past`} state={{ nameLeague: this.state.match.league.name, nameVideogame: this.state.match.videogame.name, idVideogame: this.state.match.videogame.id }}>Matchs terminés</Link></li> : ''
                             }
                         
                             <li className="crumb">{this.state.match.name}</li>
@@ -75,8 +74,9 @@ class MatchInfo extends React.Component {
                                 hour: '2-digit',
                                 minute: "2-digit"
                             }).format(new Date(this.state.match.begin_at))} (heure française)</p> : ''}
-                            <p>Score : {this.state.match.results[0].score} - {this.state.match.results[1].score} pour <b>{this.state.match.winner.name}</b></p>
-                            <p>Forfait ? {(this.state.match.forfeit) ? 'Oui' : 'Non'}</p> 
+                            { this.state.match.status === 'finished' ? <p>Score : {this.state.match.results[0].score} - {this.state.match.results[1].score} pour <b>{this.state.match.winner.name}</b></p> : '' }
+                            { this.state.match.status === 'finished' ? <p>Forfait ? {this.state.match.forfeit ? 'Oui' : 'Non'}</p> : '' }
+                            { this.state.match.status === 'not_started' ? <p>Nombre de games maximum : {this.state.match.number_of_games}</p> : '' }
                         </aside>
                 
                         <aside>
@@ -89,6 +89,21 @@ class MatchInfo extends React.Component {
                             <h3>{this.state.team2.name}</h3>
                         </aside>
                     </section>
+
+                    { this.state.match.status === 'started' ? 
+                        <section>
+                            <iframe
+                                src={this.state.match.live_embed_url.concat('', "&parent=localhost")}
+                                height="300"
+                                width="500"
+                                allowFullScreen={true}
+                                autoPlay={false}
+                                muted={true}
+                            >
+                            </iframe>  
+                        </section>
+                        : ''                    
+                    }
                 </>
             );
         } else {

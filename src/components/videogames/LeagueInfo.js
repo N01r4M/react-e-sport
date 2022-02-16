@@ -25,7 +25,7 @@ export default function LeagueInfo() {
                 <nav className="crumbs">
                     <ol>
                         <li className="crumb"><Link to={'/'}>Accueil</Link></li>
-                        <li className="crumb"><Link to={`/videogame/${videogame.id}`}>{videogame.name}</Link></li>
+                        <li className="crumb"><Link to={`/videogames/${videogame.id}`}>{videogame.name}</Link></li>
                         <li className="crumb">{league.name}</li>
                     </ol>
                 </nav>

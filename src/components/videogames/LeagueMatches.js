@@ -21,7 +21,6 @@ export default function LeagueMatches() {
     }, [])
 
     if (matches.length !== 0) {
-        console.log(data);
         return (
             <>
                 <nav className="crumbs">

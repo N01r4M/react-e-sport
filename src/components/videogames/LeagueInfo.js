@@ -31,9 +31,13 @@ export default function LeagueInfo() {
                 </nav>
 
                 <h1>Informations - {league.name}</h1>
+
+                {
+                    league.url === null ? '' : <p><br /><a href={league.url} target="_blank">Site officiel de la league</a><br /></p>
+                }
+
     
                 <Link to={`/leagues/${id}/matches/past`} state={{ nameLeague: league.name, nameVideogame: videogame.name, idVideogame: videogame.id }}>Matchs passés</Link>
-                
                 <br/>
                 <Link to={`/leagues/${id}/matches/running`} state={{ nameLeague: league.name, nameVideogame: videogame.name, idVideogame: videogame.id }}>Matchs en cours</Link>
                 <br/>

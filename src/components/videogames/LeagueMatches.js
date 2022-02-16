@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import apiPS from "../../apiPS";
 import LoadingPage from "../LoadingPage";
 
@@ -21,8 +21,28 @@ export default function LeagueMatches() {
     }, [])
 
     if (matches.length !== 0) {
+        console.log(data);
         return (
             <>
+                <nav className="crumbs">
+                    <ol>
+                        <li className="crumb"><Link to={'/'}>Accueil</Link></li>
+                        <li className="crumb"><Link to={`/videogames/${data.state.idVideogame}`}>{data.state.nameVideogame}</Link></li>
+                        <li className="crumb"><Link to={`/leagues/${id}`}>{data.state.nameLeague}</Link></li>
+                        {
+                            paramMatches === 'upcoming' ? <li className="crumb">Matchs à venir</li> : ''
+                        }
+
+                        {
+                            paramMatches === 'running' ? <li className="crumb">Matchs en cours</li> : ''
+                        }
+
+                        {
+                            paramMatches === 'past' ? <li className="crumb">Matchs terminés</li> : ''
+                        }
+                    </ol>
+                </nav>
+
                 <h1>{data.state.nameVideogame} - {data.state.nameLeague}</h1>
     
                 <div>

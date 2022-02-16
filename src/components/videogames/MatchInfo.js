@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import apiPS from "../../apiPS";
 import withRouter from "../functions/withRouter";
 import LoadingPage from "../LoadingPage";
@@ -23,13 +24,35 @@ class MatchInfo extends React.Component {
             .catch(error => {
                 console.log(error);
             })
-    }
-
-    
-    render() {
+        }
+        
+        
+        render() {
+            console.log(this.state.match);
         if ("match" in this.state && "team1" in this.state && "team2" in this.state) {
             return (
                 <>
+                    <nav className="crumbs">
+                        <ol>
+                            <li className="crumb"><Link to={'/'}>Accueil</Link></li>
+                            <li className="crumb"><Link to={`/videogames/${this.state.match.videogame.id}`}>{this.state.match.videogame.name}</Link></li>
+                            <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}`}>{this.state.match.league.name}</Link></li>
+                            {
+                                this.state.match.status === 'not_stated' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/upcoming`}>Matchs à venir</Link></li> : ''
+                            }
+
+                            {
+                                this.state.match.status === 'started' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/running`}>Matchs en cours</Link></li> : ''
+                            }
+                                
+                            {
+                                this.state.match.status === 'finished' ? <li className="crumb"><Link to={`/leagues/${this.state.match.league_id}/matches/past`}>Matchs terminés</Link></li> : ''
+                            }
+                        
+                            <li className="crumb">{this.state.match.name}</li>
+                        </ol>
+                    </nav>
+
                     <h1>{this.state.match.league.name} - {this.state.match.name}</h1>
                     <section>
                         <aside>

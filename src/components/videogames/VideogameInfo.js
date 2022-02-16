@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import ApiPS from "../../apiPS"
 import LoadingPage from "../LoadingPage"
 
@@ -23,6 +23,13 @@ export default function VideogameInfo() {
     if (leagues.length !== 0 && Object.keys(videogame).length !== 0) {
         return (
             <>
+                <nav className="crumbs">
+                    <ol>
+                        <li className="crumb"><Link to={'/'}>Accueil</Link></li>
+                        <li className="crumb">{videogame.name}</li>
+                    </ol>
+                </nav>
+                
                 <h1>{videogame.name}</h1>
                 <p>Dernière version : {videogame.current_version}</p>
                 <div>

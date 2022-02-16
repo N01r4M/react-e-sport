@@ -21,6 +21,12 @@ export default class ListVideogames extends React.Component {
         if ("videogames" in this.state) {
             return (
                 <>
+                    <nav className="crumbs">
+                        <ol>
+                            <li className="crumb">Accueil</li>
+                        </ol>
+                    </nav>
+
                     <h1>Liste des jeux</h1>
                     <ul>
                         {

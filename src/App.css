@@ -18,3 +18,23 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+nav {
+    border-bottom: 1px solid black;
+}
+
+.crumbs ol {
+    list-style-type: none;
+}
+
+.crumb {
+    display: inline-block;
+}
+
+.crumb a::after {
+    display: inline-block;
+    color: #000;
+    content: '>';
+    font-weight: bold;
+    padding: 0 3px;
+}

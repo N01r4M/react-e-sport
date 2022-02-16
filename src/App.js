@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import ListVideogames from './components/ListVideogames';
+import Login from './components/user/Login';
+import VideogameInfo from './components/VideogameInfo';
+import LeagueInfo from './components/LeagueInfo';
+import LeagueMatches from './components/LeagueMatches';
+import MatchInfo from './components/MatchInfo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<ListVideogames />} />
+            <Route path="/videogames" element={<ListVideogames />} />
+            <Route path="/videogames/:id" element={<VideogameInfo />} />
+            <Route path="/leagues/:id" element={<LeagueInfo />} />
+            <Route path="/leagues/:id/matches/past" element={<LeagueMatches />} />
+            <Route path="/leagues/:id/matches/running" element={<LeagueMatches />} />
+            <Route path="/leagues/:id/matches/upcoming" element={<LeagueMatches />} />
+            <Route path="/leagues/:idLeague/matches/:idMatch" element={<MatchInfo />} />
+            <Route path="/login" element={<Login />} />
+        </Routes>
+    )
 }
-
-export default App;

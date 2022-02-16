@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import ListVideogames from './components/ListVideogames';
+import ListVideogames from './components/videogames/ListVideogames';
 import Login from './components/user/Login';
-import VideogameInfo from './components/VideogameInfo';
-import LeagueInfo from './components/LeagueInfo';
-import LeagueMatches from './components/LeagueMatches';
-import MatchInfo from './components/MatchInfo';
+import VideogameInfo from './components/videogames/VideogameInfo';
+import LeagueInfo from './components/videogames/LeagueInfo';
+import LeagueMatches from './components/videogames/LeagueMatches';
+import MatchInfo from './components/videogames/MatchInfo';
 
 export default function App() {
     return (

@@ -1,24 +1,38 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import LeagueInfo from './components/videogames/LeagueInfo';
+import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarNotLogin from './components/elements/navbar';
+import Homepage from './components/Homepage';
 import LeaguesList from './components/videogames/LeaguesList';
-import Login from './components/user/Login';
-import MatchInfo from './components/videogames/MatchInfo';
+import LeagueSchedule from './components/videogames/LeagueSchedule';
+import LeagueTeams from './components/videogames/LeagueTeams';
 import TeamInfo from './components/videogames/TeamInfo';
-import TournamentInfo from './components/videogames/TournamentInfo';
-import VideogamesList from './components/videogames/VideogamesList';
+import MatchInfo from './components/videogames/MatchInfo';
+import ChampionsList from './components/videogames/ChampionsList';
+import ChampionInfo from './components/videogames/ChampionInfo';
+import Login from './components/user/Login';
+import Home from './components/user/Home';
+import Profile from './components/user/Profile';
+import Register from './components/user/Register';
 
 export default function App() {
     return (
-        <Routes>
-            <Route path="/" element={<VideogamesList />} />
-            <Route path="/videogames" element={<VideogamesList />} />
-            <Route path="/videogames/:id" element={<LeaguesList />} />
-            <Route path="/leagues/:id" element={<LeagueInfo />} />
-            <Route path="/teams/:id" element={<TeamInfo />} />
-            <Route path="/tournaments/:id" element={<TournamentInfo />} />
-            <Route path="/match/:id" element={<MatchInfo />} />
-            <Route path="/login" element={<Login />} />
-        </Routes>
+        <>
+            <NavbarNotLogin />
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/videogames/:slug/leagues/:page" element={<LeaguesList />} />
+                <Route path="/leagues/:slug/schedule" element={<LeagueSchedule />} />
+                <Route path="/leagues/:slug/teams" element={<LeagueTeams />} />
+                <Route path="/teams/:slug" element={<TeamInfo />} />
+                <Route path="/matches/:slug" element={<MatchInfo />} />
+                <Route path="/:slug/champions/:page" element={<ChampionsList />} />
+                <Route path="/:slug/champions/:idChampion" element={<ChampionInfo />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/user/homepage" element={<Home />} />
+                <Route path="/user/profile" element={<Profile />} />
+                <Route path="/user/register" element={<Register />} />
+            </Routes>
+        </>
     )
 }

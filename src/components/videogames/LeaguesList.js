@@ -2,8 +2,9 @@ import React from "react"
 import withRouter from "../functions/withRouter";
 import apiPs from "../../apiPS";
 import LoadingPage from "../LoadingPage";
-import { Link } from "react-router-dom";
 import Pagination from "react-bootstrap/Pagination";
+import TeamCard from "../elements/TeamCard";
+import PaginationBar from "../elements/Pagination";
 
 
 class LeaguesList extends React.Component {
@@ -55,12 +56,6 @@ class LeaguesList extends React.Component {
     
     render() {
         if ("videogame" in this.state && "leagues" in this.state) {
-            let paginationItems = []
-            for (let nb = 1; nb <= this.state.nbPages; nb++) {
-                paginationItems.push(<Pagination.Item key={nb} active={nb === this.page} href={`/videogames/${this.slug}/leagues/${nb}`}>{nb}</Pagination.Item>)
-                
-            }
-
             return (
                 <>
                     <h1>{this.state.videogame.name}</h1>
@@ -68,26 +63,16 @@ class LeaguesList extends React.Component {
                     <div className="list-cards">
                         {
                             this.state.leagues.map(league => 
-                                <div key={ league.id } className="card shadow rounded">
-                                    <img src={league.image_url} className="card-img-top" alt="Logo league" />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{ league.name }</h5>
-                                        <div className="d-flex justify-content-around">
-                                            <Link to={`/leagues/${league.slug}/teams`} className="btn btn-primary">Equipes</Link>
-                                            <Link to={`/leagues/${league.slug}/schedule`} className="btn btn-primary">Programme</Link>
-                                        </div>
-                                    </div>
-                                </div>
+                                <TeamCard league={league} />
                             )
                         }
                     </div>
 
                     <div className="d-flex justify-content-center">
-                        <Pagination>
-                            <Pagination.Prev disabled={1 === this.page} href={`/videogames/${this.slug}/leagues/${this.page - 1}`} />
-                            {paginationItems}
-                            <Pagination.Next disabled={this.state.nbPages === this.page} href={`/videogames/${this.slug}/leagues/${this.page + 1}`} />
-                        </Pagination>
+                        <PaginationBar 
+                            nbPages={this.state.nbPages} 
+                            page={this.page} 
+                            url={`/videogames/${this.slug}/leagues/`} />
                     </div>
                 </>
             );

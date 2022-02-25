@@ -7,6 +7,11 @@ $grey: mix($white, $bg, 10%);
 $dark: mix($black, $bg, 40%);
 
 
+$primary: #18b08a;
+
+$primary-d-5: mix($black, $primary, 5%);
+$primary-d-15: mix($black, $primary, 15%);
+
 html, body {
     background-color: $bg !important;
 }
@@ -14,6 +19,8 @@ html, body {
 body {
     color: $lightgrey !important;
     padding-top: 60px;
+    height: 100vh;
+    
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -105,6 +112,11 @@ nav {
     }
 }
 
+#root {
+    height: 100%;
+    position: relative;
+}
+
 .loader-container {
     height: 90vh;
     width: 90vh;
@@ -139,6 +151,63 @@ nav {
             margin: auto;
             text-align: center;
             padding-bottom: 1rem;
+        }
+    }
+}
+
+.button {
+    background-image: linear-gradient(90deg, $primary, $primary-d-15);
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 1rem;
+    color: $lightgrey;
+    border-bottom: 2px solid $primary;
+    transition: .5s;
+    background-repeat: no-repeat;
+    background-size: 0;
+    margin: .1rem .5rem;
+    text-transform: uppercase;
+
+    &:hover {
+        background-size: 100%;
+        color: $bg;
+        border-radius: .25rem;
+        padding: .1rem .5rem;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    &.button-link {
+        text-decoration: none;
+    }
+}
+
+.page-item {
+
+    &.active {
+        cursor: pointer;
+
+        .page-link {
+            background-image: linear-gradient(90deg, $primary, $primary-d-5);
+            border-image-source: linear-gradient(90deg, $primary, $primary-d-5);
+        }
+    }
+
+    
+    .page-link {
+        color: $bg;
+        font-weight: 450;
+        
+        &:focus {
+            box-shadow: 0 0 0 .25rem rgb(24 176 138 / 25%);
+        }
+
+        &:hover {
+            color: $bg;
         }
     }
 }

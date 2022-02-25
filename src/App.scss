@@ -18,9 +18,8 @@ html, body {
 
 body {
     color: $lightgrey !important;
-    padding-top: 60px;
-    height: 100vh;
-    
+    padding-top: 3.75rem;
+    height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,7 +33,7 @@ nav {
     width: 100%;
     background-color: $dark;
     margin-bottom: 0;
-    border-bottom: 1px solid $grey;
+    border-bottom: .06rem solid $grey;
     z-index: 1000;
 
     ul {
@@ -62,7 +61,7 @@ nav {
             }
             
             a {
-                padding: 15px;
+                padding: 1rem;
 
                 &:hover {
                     color: $white;
@@ -70,14 +69,14 @@ nav {
             }
 
             h3 {
-                padding: 10px 15px;
+                padding: .625rem 1rem;
                 margin: 0;
             }
 
             a, h3 {
                 display: block;
                 color: $lightgrey;
-                letter-spacing: 1px;
+                letter-spacing: .06;
                 text-decoration: none;
                 text-transform: uppercase;
             }
@@ -88,8 +87,8 @@ nav {
             background: $bg;
             position: absolute;
             top: 100%;
-            box-shadow: -3px 3px 10px -2px rgba(0,0,0,.1);
-            border: 1px solid rgba(0,0,0,.1);
+            box-shadow: -.2rem .2rem .625rem -.125rem rgba(0,0,0,.1);
+            border: .06rem solid rgba(0,0,0,.1);
             padding: 0;
 
             li {
@@ -98,8 +97,8 @@ nav {
 
 
                 a {
-                    padding: 15px 30px;
-                    border-bottom: 1px solid rgba(0,0,0,.05);
+                    padding: 1rem 2rem;
+                    border-bottom: .06rem solid rgba(0,0,0,.05);
                 }
             }
 
@@ -138,12 +137,12 @@ nav {
         background-color: $bg !important;
         margin: 1rem;
         padding: 1.25rem;
-        width: 285px;
-        border: 1px solid rgba(0,0,0,.1);
+        width: 17.8rem;
+        border: .06rem solid rgba(0,0,0,.1);
 
         img {
-            height: 100px;
-            width: 100px;
+            height: 6.25rem;
+            width: 6.25rem;
             margin: auto;
         }
 
@@ -165,7 +164,7 @@ nav {
     cursor: pointer;
     font-size: 1rem;
     color: $lightgrey;
-    border-bottom: 2px solid $primary;
+    border-bottom: .125rem solid $primary;
     transition: .5s;
     background-repeat: no-repeat;
     background-size: 0;
@@ -210,4 +209,89 @@ nav {
             color: $bg;
         }
     }
+}
+
+.bg-team {
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(1rem);
+    opacity: 0.3;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.group-matches {
+    padding-bottom: 1rem;
+
+    .date-schedule {
+        text-transform: capitalize;
+        margin-left: 1rem;
+    }
+
+    .match-card {
+        box-shadow: inset 0 .625rem 1.25rem rgba(0,0,0,.2);
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        height: 6.25rem;
+        margin: 1rem 6rem;
+        padding: 0.8rem;
+        
+        &.border-today {
+            border-left: .375rem solid $primary;
+        }
+
+        .hour {
+            display: inline-block;
+            flex: 0 0 6.875rem;
+        }
+
+        .teams-score {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+            text-align: center;
+            position: relative;
+
+            .team {
+                display: flex;
+                align-items: center;
+                width: 45%;
+                justify-content: flex-start;
+                
+                &.ta-left {text-align: left}
+                &.ta-right {text-align: right}
+
+                &.fd-reverse {flex-direction: row-reverse}
+
+                &.loser {opacity: 0.4;}
+
+                img {
+                    width: 4.375rem;
+                    height: 4.375rem;
+                    margin: 1rem 0;
+                    box-sizing: content-box;
+                }
+                
+                .pad-left{padding-left: .8rem}
+                .pad-right{padding-right: .8rem}
+            }
+
+            .score {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 5.5rem;
+            }
+        }
+    }
+}
+
+.not-display {
+    display: none;
 }

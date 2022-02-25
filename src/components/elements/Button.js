@@ -12,3 +12,15 @@ export default class LinkButton extends React.Component {
         );
     }
 }
+
+export class BetButton extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <btn className="button">Parier</btn>
+        );
+    }
+}

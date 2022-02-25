@@ -22,7 +22,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/videogames/:slug/leagues/:page" element={<LeaguesList />} />
-                <Route path="/leagues/:slug/schedule" element={<LeagueSchedule />} />
+                <Route path="/leagues/:id/schedule" element={<LeagueSchedule />} />
                 <Route path="/leagues/:slug/teams" element={<LeagueTeams />} />
                 <Route path="/teams/:slug" element={<TeamInfo />} />
                 <Route path="/matches/:slug" element={<MatchInfo />} />

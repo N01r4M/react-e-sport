@@ -13,3 +13,16 @@ export function formatDate(date) {
         month: "long"
     }).format(new Date(date))
 }
+
+export function formatDateTime(dateTime) {
+    return <>
+        {
+            new Intl.DateTimeFormat("fr-FR", {
+                day: "2-digit",
+                month: "short"
+            }).format(new Date(dateTime))
+        }
+        <br />
+        { formatHour(dateTime) }
+    </>
+}

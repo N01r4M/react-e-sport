@@ -241,6 +241,10 @@ nav {
         height: 6.25rem;
         margin: 1rem 6rem;
         padding: 0.8rem;
+
+        &.small-card {
+            margin: .7rem 1rem !important;
+        }
         
         &.border-today {
             border-left: .375rem solid $primary;
@@ -288,6 +292,31 @@ nav {
                 justify-content: center;
                 width: 5.5rem;
             }
+        }
+    }
+
+    .player-card {
+        box-shadow: inset 0 .625rem 1.25rem rgba(0,0,0,.2);
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        height: 6.25rem;
+        margin: 1rem 6rem;
+        padding: 0.8rem;
+
+        &.small-card {
+            margin: .7rem 1rem !important;
+        }
+
+        img {
+            height: 6rem;
+            margin: 0 2rem;
+        }
+
+        span {
+            text-transform: uppercase;
         }
     }
 }

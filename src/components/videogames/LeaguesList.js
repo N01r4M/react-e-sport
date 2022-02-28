@@ -2,8 +2,7 @@ import React from "react"
 import withRouter from "../functions/withRouter";
 import apiPs from "../../apiPS";
 import LoadingPage from "../LoadingPage";
-import Pagination from "react-bootstrap/Pagination";
-import TeamCard from "../elements/TeamCard";
+import LeagueCard from "../elements/LeagueCard";
 import PaginationBar from "../elements/Pagination";
 
 
@@ -63,7 +62,7 @@ class LeaguesList extends React.Component {
                     <div className="list-cards">
                         {
                             this.state.leagues.map(league => 
-                                <TeamCard league={league} />
+                                <LeagueCard league={league} />
                             )
                         }
                     </div>

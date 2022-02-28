@@ -1,10 +1,10 @@
-import React, { createRef, useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiPs from "../../apiPS";
 import MatchCard from "../elements/MatchCard";
 import LoadingPage from "../LoadingPage";
 import { formatDate } from "../functions/formatsDateTime";
-import isSameDay from "../functions/isSameDay";
+import BgLogo from "../elements/Background";
 
 export default function LeagueSchedule() {
     const   { id } = useParams(),
@@ -16,7 +16,7 @@ export default function LeagueSchedule() {
 
     let matches = {}
 
-    const  getMatches = (data) => {
+    const getMatches = (data) => {
         apiPs.get(`/series/${data.id}/matches/past?sort=-begin_at`)
             .then(res => {
                 setPastMatches(res.data.reverse())
@@ -114,7 +114,7 @@ export default function LeagueSchedule() {
         } else {
             return (
                 <>
-                    <div className="bg-team" style={{ backgroundImage: `url(${serie.league.image_url})` }}></div>
+                    <BgLogo image={serie.league.image_url} />
 
                     {renderMatches}
                 </>

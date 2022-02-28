@@ -1,20 +1,19 @@
-import React from "react"
+import React from "react";
 import LinkButton from "./Button";
 
 export default class TeamCard extends React.Component {
     constructor(props) {
         super(props)
     }
-
+    
     render() {
         return (
-            <div key={this.props.league.id} className="card shadow rounded">
-                <img src={this.props.league.image_url} className="card-img-top" alt="Logo league" />
+            <div key={this.props.team.id} className= "card shadow rounded">
+                <img src={this.props.team.image_url} className="card-img-top" alt="Logo team" />
                 <div className="card-body">
-                    <h5 className="card-title">{this.props.league.name}</h5>
+                    <h5 className="card-title">{this.props.team.name}</h5>
                     <div className="d-flex justify-content-around">
-                        <LinkButton url={`/leagues/${this.props.league.slug}/team`} txt="Equipes" />
-                        <LinkButton url={`/leagues/${this.props.league.id}/schedule`} txt="Programme" />
+                        <LinkButton url={`/teams/${this.props.team.slug}`} txt="Voir plus ..." />
                     </div>
                 </div>
             </div>

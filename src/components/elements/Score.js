@@ -8,7 +8,7 @@ export default class Score extends React.Component {
     render() {
         return (
             <div className="score">{
-                this.props.status !== 'finished' ? 'VS' : `${this.props.team1} - ${this.props.team2}`
+                (this.props.status === 'finished' || this.props.status === 'running') ? `${this.props.team1} - ${this.props.team2}` : 'VS' 
             }</div>
         );
     }

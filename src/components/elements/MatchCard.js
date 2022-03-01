@@ -1,7 +1,7 @@
 import React from "react";
 import formatHour, { formatDateTime } from "../functions/formatsDateTime";
 import isSameDay from "../functions/isSameDay";
-import { BetButton } from "./Button";
+import LinkButton, { BetButton } from "./Button";
 import TeamScore from "./TeamsScore";
 
 export default class MatchCard extends React.Component {
@@ -22,6 +22,10 @@ export default class MatchCard extends React.Component {
 
                 {
                     this.props.match.status === 'not_started' && <BetButton />
+                }
+
+                {
+                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} match={this.props.match} txt="Regarder" />
                 }
             </div>
         );
@@ -46,6 +50,10 @@ export class SmallMatchCard extends React.Component {
 
                 {
                     this.props.match.status === "not_started" && <BetButton />
+                }
+
+                {
+                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} match={this.props.match} txt="Regarder" />
                 }
             </div>
         );

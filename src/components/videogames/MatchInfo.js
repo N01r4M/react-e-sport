@@ -5,9 +5,7 @@ import formatHour from "../functions/formatsDateTime";
 
 export default function MatchInfo(props) {
     const   location = useLocation(),
-            match = location.state.match
-
-    //console.log(match);
+            match = location.state.params
 
     return (
         <div 
@@ -76,7 +74,7 @@ export default function MatchInfo(props) {
 
             <div>
                 <iframe
-                    src={match.live_embed_url.concat('', "&parent=localhost&autoplay=true&muted=true")}
+                    src={match.live_embed_url && match.live_embed_url.concat('', "&parent=localhost&autoplay=true&muted=true")}
                     height="360"
                     width="640"
                     allowFullScreen={true}>

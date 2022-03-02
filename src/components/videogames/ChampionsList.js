@@ -14,11 +14,11 @@ export default function ChampionsList() {
 
 
     const getChampions = () => {
-        apiPS.get(`/lol/champions?sort=name&page=${page}&per_page=30`)
+        apiPS.get(`/lol/champions?sort=name&page=${page}&per_page=20`)
         .then(res => {
             setChampions(res.data)
             
-            apiPS.get(`/lol/champions?sort=name&page=${parseInt(page) + 1}&per_page=30`)
+            apiPS.get(`/lol/champions?sort=name&page=${parseInt(page) + 1}&per_page=20`)
                 .then(res => {
                     res.data.length === 0 && setDisabled(true)
                 })
@@ -38,7 +38,7 @@ export default function ChampionsList() {
 
     if (!loading) {
         return (
-            <>
+            <div>
                 <h2>Liste des champions</h2>
 
                 <div className="d-flex justify-content-center">
@@ -57,10 +57,13 @@ export default function ChampionsList() {
                                 <img src={champion.image_url} className="card-img-top" alt="Logo league" />
                                 <div className="card-body">
                                     <h5 className="card-title">{champion.name}</h5>
-                                    <LinkButton
-                                        url={`/champions/${champion.id}`}
-                                        txt="Voir plus ..."
-                                    />
+                                    <ul>
+                                        <li>Armure : {champion.armor}</li>
+                                        <li>Attack damage : {champion.attackdamage}</li>
+                                        <li>Attack range : {champion.attackrange}</li>
+                                        <li>HP : {champion.hp}</li>
+                                        <li>Mana : {champion.mp}</li>
+                                    </ul>
                                 </div>
                             </div> 
                         )
@@ -75,7 +78,7 @@ export default function ChampionsList() {
                         url={`/${slug}/champions/`}
                     />
                 </div>
-            </>
+            </div>
         );
         
     } else {

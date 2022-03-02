@@ -25,7 +25,7 @@ export default class MatchCard extends React.Component {
                 }
 
                 {
-                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} match={this.props.match} txt="Regarder" />
+                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} params={this.props.match} txt="Regarder" />
                 }
             </div>
         );
@@ -53,7 +53,7 @@ export class SmallMatchCard extends React.Component {
                 }
 
                 {
-                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} match={this.props.match} txt="Regarder" />
+                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} params={this.props.match} txt="Regarder" />
                 }
             </div>
         );

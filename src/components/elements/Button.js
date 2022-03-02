@@ -8,7 +8,7 @@ export default class LinkButton extends React.Component {
 
     render() {
         return (
-            <Link to={this.props.url} state={{ match: this.props.match }} className="button button-link">{this.props.txt}</Link>
+            <Link to={this.props.url} state={{ params: this.props.params }} className="button button-link">{this.props.txt}</Link>
         );
     }
 }

@@ -27,7 +27,7 @@ export default function App() {
                 <Route path="/teams/:slug" element={<TeamInfo />} />
                 <Route path="/matches/:slug" element={<MatchInfo />} />
                 <Route path="/:slug/champions/:page" element={<ChampionsList />} />
-                <Route path="/:slug/champions/:idChampion" element={<ChampionInfo />} />
+                <Route path="/champions/:idChampion" element={<ChampionInfo />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/user/homepage" element={<Home />} />
                 <Route path="/user/profile" element={<Profile />} />

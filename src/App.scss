@@ -16,12 +16,14 @@ html, body {
     background-color: $bg !important;
     min-height: 100vh;
     min-width: 100vw;
+    max-width: 100vw;
 }
 
 body {
     color: $lightgrey !important;
     padding-top: 3.75rem;
     height: 100%;
+    max-width: 100vw;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -111,6 +113,10 @@ nav {
             }
         }
     }
+}
+
+div {
+    max-width: 100vw;
 }
 
 #root {

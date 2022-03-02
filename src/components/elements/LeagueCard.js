@@ -8,7 +8,7 @@ export default class LeagueCard extends React.Component {
 
     render() {
         return (
-            <div key={this.props.league.id} className="card shadow rounded">
+            <div key={this.props.league.id} className="card-elmt shadow rounded">
                 <img src={this.props.league.image_url} className="card-img-top" alt="Logo league" />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.league.name}</h5>

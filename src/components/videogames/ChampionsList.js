@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiPS from "../../apiPS";
-import LinkButton from "../elements/Button";
 import PaginationBar from "../elements/Pagination";
 import LoadingPage from "../LoadingPage";
 
@@ -53,8 +52,8 @@ export default function ChampionsList() {
                 <div className="list-cards">
                     {
                         champions.map(champion => 
-                            <div key={champion.id} className="card shadow rounded">
-                                <img src={champion.image_url} className="card-img-top" alt="Logo league" />
+                            <div key={champion.id} className="card-elmt shadow rounded">
+                                <img src={champion.image_url} className="card-img-top" alt="Image champion" />
                                 <div className="card-body">
                                     <h5 className="card-title">{champion.name}</h5>
                                     <ul>

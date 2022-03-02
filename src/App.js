@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarNotLogin from './components/elements/navbar';
+import NavbarNotLogin from './components/elements/Navbar';
 import Homepage from './components/Homepage';
 import LeaguesList from './components/videogames/LeaguesList';
 import LeagueSchedule from './components/videogames/LeagueSchedule';
@@ -9,7 +9,7 @@ import LeagueTeams from './components/videogames/LeagueTeams';
 import TeamInfo from './components/videogames/TeamInfo';
 import MatchInfo from './components/videogames/MatchInfo';
 import ChampionsList from './components/videogames/ChampionsList';
-import ChampionInfo from './components/videogames/ChampionInfo';
+import HeroesList from './components/videogames/HeroesList';
 import Login from './components/user/Login';
 import Home from './components/user/Home';
 import Profile from './components/user/Profile';
@@ -27,7 +27,7 @@ export default function App() {
                 <Route path="/teams/:slug" element={<TeamInfo />} />
                 <Route path="/matches/:slug" element={<MatchInfo />} />
                 <Route path="/:slug/champions/:page" element={<ChampionsList />} />
-                <Route path="/champions/:idChampion" element={<ChampionInfo />} />
+                <Route path="/:slug/heroes/:page" element={<HeroesList />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/user/homepage" element={<Home />} />
                 <Route path="/user/profile" element={<Profile />} />

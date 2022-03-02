@@ -141,16 +141,22 @@ div {
     flex-wrap: wrap;
     justify-content: center;
 
-    .card {
+    .card-elmt {
         background-color: $bg !important;
         margin: 1rem;
         padding: 1.25rem;
         width: 17.8rem;
         border: .06rem solid rgba(0,0,0,.1);
+        display: flex;
+        word-wrap: break-word;
+        flex-wrap: wrap;
+        align-content: space-around;
+        min-width: 0;
+        background-clip: border-box;
 
         img {
-            height: 6.25rem;
-            width: 6.25rem;
+            max-height: 6.25rem;
+            max-width: 6.25rem;
             margin: auto;
         }
 
@@ -158,6 +164,30 @@ div {
             margin: auto;
             text-align: center;
             padding-bottom: 1rem;
+        }
+    }
+
+    .card-heroes {
+        background-color: $bg !important;
+        margin: 1rem;
+        padding: 1.25rem;
+        width: 17.8rem;
+        border: .06rem solid rgba(0,0,0,.1);
+        display: flex;
+        word-wrap: break-word;
+        flex-direction: column;
+        min-width: 0;
+        background-clip: border-box;
+
+        img {
+            max-height: 10rem;
+            max-width: 10rem;
+            margin: auto;
+        }
+
+        .card-title {
+            margin: auto;
+            text-align: center;
         }
     }
 }
@@ -284,8 +314,8 @@ div {
                 &.loser {opacity: 0.4;}
 
                 img {
-                    width: 4.375rem;
-                    height: 4.375rem;
+                    max-width: 4.375rem;
+                    max-height: 4.375rem;
                     margin: 1rem 0;
                     box-sizing: content-box;
                 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiPs from "../../apiPS";
-import MatchCard from "../elements/MatchCard";
+import { MatchCard } from "../elements/Card";
 import LoadingPage from "../LoadingPage";
 import { formatDate } from "../functions/formatsDateTime";
 import BgLogo from "../elements/Background";

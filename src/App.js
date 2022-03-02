@@ -9,7 +9,6 @@ import LeagueTeams from './components/videogames/LeagueTeams';
 import TeamInfo from './components/videogames/TeamInfo';
 import MatchInfo from './components/videogames/MatchInfo';
 import ChampionsList from './components/videogames/ChampionsList';
-import HeroesList from './components/videogames/HeroesList';
 import Login from './components/user/Login';
 import Home from './components/user/Home';
 import Profile from './components/user/Profile';
@@ -27,7 +26,7 @@ export default function App() {
                 <Route path="/teams/:slug" element={<TeamInfo />} />
                 <Route path="/matches/:slug" element={<MatchInfo />} />
                 <Route path="/:slug/champions/:page" element={<ChampionsList />} />
-                <Route path="/:slug/heroes/:page" element={<HeroesList />} />
+                <Route path="/:slug/heroes/:page" element={<ChampionsList />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/user/homepage" element={<Home />} />
                 <Route path="/user/profile" element={<Profile />} />

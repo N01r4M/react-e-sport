@@ -3,7 +3,7 @@ import BgLogo from "../elements/Background"
 import withRouter from "../functions/withRouter";
 import apiPs from "../../apiPS";
 import LoadingPage from "../LoadingPage";
-import TeamCard from "../elements/TeamCard";
+import { TeamCard } from "../elements/Card";
 import PaginationBar from "../elements/Pagination";
 
 class LeagueTeams extends React.Component {

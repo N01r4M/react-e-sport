@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiPS from "../../apiPS";
 import BgLogo from "../elements/Background";
-import { SmallMatchCard } from "../elements/MatchCard";
-import PlayerCard from "../elements/PlayerCard";
-import { formatDate } from "../functions/formatsDateTime";
+import { SmallMatchCard } from "../elements/Card";
+import { PlayerCard } from "../elements/Card";
 import LoadingPage from "../LoadingPage";
 
 export default function TeamInfo() {

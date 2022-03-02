@@ -13,14 +13,14 @@ export default class NavbarNotLogin extends React.Component {
                             <Link to={`/videogames/league-of-legends/leagues/1`}>League of Legends</Link>
                             <ul>
                                 <li><Link to={`/videogames/league-of-legends/leagues/1`}>Leagues</Link></li>
-                                <li><Link to={`/league-of-legends/champions/1`}>Champions</Link></li>
+                                <li><Link to={`/lol/champions/1`}>Champions</Link></li>
                             </ul>
                         </li>
                         <li>
                             <Link to={`/videogames/dota2/leagues/1`}>Dota 2</Link>
                             <ul>
                                 <li><Link to={`/videogames/dota-2/leagues/1`}>Leagues</Link></li>
-                                <li><Link to={`/dota-2/heroes/1`}>Héros</Link></li>
+                                <li><Link to={`/dota2/heroes/1`}>Héros</Link></li>
                             </ul>
                         </li>
                         <li className="ms-auto">

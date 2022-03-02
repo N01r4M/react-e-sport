@@ -2,7 +2,7 @@ import React from "react"
 import withRouter from "../functions/withRouter";
 import apiPs from "../../apiPS";
 import LoadingPage from "../LoadingPage";
-import LeagueCard from "../elements/LeagueCard";
+import LeagueCard from "../elements/Card";
 import PaginationBar from "../elements/Pagination";
 
 

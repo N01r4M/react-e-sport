@@ -8,7 +8,6 @@ export default class TeamScore extends React.Component {
     }
     
     render() {
-        console.log(this.props.match);
         return (
             <div className="teams-score">
                 {

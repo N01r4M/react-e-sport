@@ -4,14 +4,26 @@ import apiPs from "../../apiPS";
 import LoadingPage from "../LoadingPage";
 import LeagueCard from "../elements/Card";
 import PaginationBar from "../elements/Pagination";
+import apiDB from "../../apiDB";
 
 
 class LeaguesList extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            favLeagues: []
+        }
         this.slug = props.params.slug
         this.page = parseInt(props.params.page)
+
+        this.parseJWT = (token) => {
+            if (!token) { return; }
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace('-', '+').replace('_', '/');
+            return JSON.parse(window.atob(base64)).sub;
+        }
+
+        this.idUser = this.parseJWT(sessionStorage.getItem('token'))
     }
 
     getData = () => {
@@ -35,8 +47,21 @@ class LeaguesList extends React.Component {
         })
     }
 
+    getFav = () => {
+        apiDB.get(`/favLeagues?idUser=${this.idUser}`)
+            .then(res => {
+                res.data.map(elmt => {
+                    this.setState({ favLeagues: [...this.state.favLeagues, elmt.idLeague] });
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     componentDidMount() {
         this.getData()
+        sessionStorage.getItem('token') !== null && this.getFav()
     }
 
     componentDidUpdate(prevProps) {
@@ -49,6 +74,7 @@ class LeaguesList extends React.Component {
             this.page = parseInt(this.props.params.page)
             
             this.getData()
+            sessionStorage.getItem('token') !== null && this.getFav()
         }
     }
 
@@ -62,7 +88,7 @@ class LeaguesList extends React.Component {
                     <div className="list-cards">
                         {
                             this.state.leagues.map(league => 
-                                <LeagueCard league={league} />
+                                <LeagueCard league={league} fav={this.state.favLeagues.includes(league.id)} idUser={this.idUser} />
                             )
                         }
                     </div>

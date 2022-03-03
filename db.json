@@ -24,5 +24,32 @@
       "coins": 100,
       "id": 3
     }
+  ],
+  "favLeagues": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "idLeague": 293
+    },
+    {
+      "id": 2,
+      "idUser": 1,
+      "idLeague": 4300
+    },
+    {
+      "idUser": 1,
+      "idLeague": 4553,
+      "id": 3
+    },
+    {
+      "idUser": 1,
+      "idLeague": 4360,
+      "id": 4
+    },
+    {
+      "idUser": 1,
+      "idLeague": 4118,
+      "id": 5
+    }
   ]
 }

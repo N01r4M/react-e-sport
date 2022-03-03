@@ -408,3 +408,11 @@ div {
         width: 80%;
     }
 }
+
+.icon {
+    color: $error;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

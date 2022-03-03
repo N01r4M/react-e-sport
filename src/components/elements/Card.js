@@ -12,9 +12,6 @@ export default class LeagueCard extends React.Component {
             fav: this.props.fav
         }
     }
-
-    
-    
     
     render() {
         return (

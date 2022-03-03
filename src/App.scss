@@ -10,6 +10,7 @@ $grey-d-40: mix($black, $bg, 40%);
 
 $primary: #18b08a;
 $error: #FF5C5C;
+$yellow: #D8D841;
 
 $primary-d-5: mix($black, $primary, 5%);
 $primary-d-15: mix($black, $primary, 15%);
@@ -415,4 +416,8 @@ div {
     &:hover {
         cursor: pointer;
     }
+}
+
+.icoins {
+    color: $yellow;
 }

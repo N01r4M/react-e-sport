@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarNotLogin from './components/elements/Navbar';
+import NavbarEparis from './components/elements/Navbar';
 import Homepage from './components/Homepage';
 import LeaguesList from './components/videogames/LeaguesList';
 import LeagueSchedule from './components/videogames/LeagueSchedule';
@@ -18,7 +18,7 @@ import Register from './components/user/Register';
 export default function App() {
     return (
         <>
-            <NavbarNotLogin />
+            <NavbarEparis />
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/videogames/:slug/leagues/:page" element={<LeaguesList />} />

@@ -74,7 +74,7 @@ class LeaguesList extends React.Component {
             this.page = parseInt(this.props.params.page)
             
             this.getData()
-            sessionStorage.getItem('token') !== null && this.getFav()
+        sessionStorage.getItem('token') !== null && this.getFav()
         }
     }
 

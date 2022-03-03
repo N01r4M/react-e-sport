@@ -1,19 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react"
 import apiDB from "../../apiDB";
-import LinkButton from "../elements/Button";
+import { BigLinkButton } from "../elements/Button";
 
 export default function Login() {
     return (
         <>
-            <LinkButton url={`/login`} txt="Déjà e-parieur ? Connecte-toi !" />
+            <BigLinkButton url={`/login`} txt="Déjà e-parieur ? Connecte-toi !" />
 
-            <div className="rounded shadow" style={{
-                margin: "6rem auto",
-                border: "1px solid black",
-                padding: "1.25rem",
-                width: "40%"
-            }}>
+            <div className="form-div rounded shadow">
                 <h2>Inscription</h2>
 
                 <Formik
@@ -75,33 +70,33 @@ export default function Login() {
                     {({ isSubmitting }) => (
                         <Form>
                             <div className="mb-3 d-flex justify-content-center flex-column">
-                                <label htmlFor="username" >Identifiant</label>
-                                <Field type="text" name="username" className="align-self-center" style={{ width: "80%" }} />
-                                <ErrorMessage name="username" component="div" style={{ color: 'red' }} />
+                                <label htmlFor="username"><h5>Identifiant</h5></label>
+                                <Field type="text" name="username" className="align-self-center w-80" />
+                                <ErrorMessage name="username" component="div" className="error" />
                             </div>
 
                             <div className="mb-3 d-flex justify-content-center flex-column">
-                                <label htmlFor="firstName" >Prénom</label>
-                                <Field type="text" name="firstName" className="align-self-center" style={{ width: "80%" }} />
-                                <ErrorMessage name="firstName" component="div" style={{ color: 'red' }} />
+                                <label htmlFor="firstName"><h5>Prénom</h5></label>
+                                <Field type="text" name="firstName" className="align-self-center w-80" />
+                                <ErrorMessage name="firstName" component="div" className="error" />
                             </div>
 
                             <div className="mb-3 d-flex justify-content-center flex-column">
-                                <label htmlFor="email" >Adresse mail</label>
-                                <Field type="email" name="email" className="align-self-center" autocomplete="email" style={{ width: "80%" }} />
-                                <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+                                <label htmlFor="email"><h5>Adresse mail</h5></label>
+                                <Field type="email" name="email" className="align-self-center w-80" autocomplete="email" />
+                                <ErrorMessage name="email" component="div" className="error" />
                             </div>
 
                             <div className="mb-3 d-flex justify-content-center flex-column">
-                                <label htmlFor="password1" >Mot de passe</label>
-                                <Field type="password" name="password1" className="align-self-center" style={{ width: "80%" }} />
-                                <ErrorMessage name="password1" component="div" style={{ color: 'red' }} />
+                                <label htmlFor="password1"><h5>Mot de passe</h5></label>
+                                <Field type="password" name="password1" className="align-self-center w-80" />
+                                <ErrorMessage name="password1" component="div" className="error" />
                             </div>
 
                             <div className="mb-3 d-flex justify-content-center flex-column">
-                                <label htmlFor="password2" >Confirmation du mot de passe</label>
-                                <Field type="password" name="password2" className="align-self-center" style={{ width: "80%" }} />
-                                <ErrorMessage name="password2" component="div" style={{ color: 'red' }} />
+                                <label htmlFor="password2"><h5>Confirmation du mot de passe</h5></label>
+                                <Field type="password" name="password2" className="align-self-center w-80" />
+                                <ErrorMessage name="password2" component="div" className="error" />
                             </div>
 
                             <button type="submit" className="submit-button">Valider</button>

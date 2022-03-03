@@ -1,19 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react"
 import apiDB from "../../apiDB";
-import LinkButton from "../elements/Button";
+import { BigLinkButton } from "../elements/Button";
 
 export default function Login() {
     return (
         <>
-            <LinkButton url={`/register`} txt="Rejoins la communauté des e-parieurs !" />
+            <BigLinkButton url={`/register`} txt="Rejoins la communauté des e-parieurs !" />
           
-            <div className="rounded shadow" style={{
-                margin: "6rem auto",
-                border: "1px solid black",
-                padding: "1.25rem",
-                width: "40%"
-            }}>
+            <div className="form-div rounded shadow">
                 <h2>Connexion</h2>
 
                 <Formik
@@ -59,15 +54,15 @@ export default function Login() {
                     {({ isSubmitting }) => (
                         <Form>
                             <div className="mb-3 d-flex justify-content-center flex-column">
-                                <label htmlFor="email" >Adresse mail</label>
-                                <Field type="email" name="email" className="align-self-center" autocomplete="email" style={{ width: "80%" }} />
-                                <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+                                <label htmlFor="email" ><h5>Adresse mail</h5></label>
+                                <Field type="email" name="email" className="align-self-center w-80" autocomplete="email" />
+                                <ErrorMessage name="email" component="div" className="error" />
                             </div>
 
                             <div className="mb-3 d-flex justify-content-center flex-column">
-                                <label htmlFor="password" >Mot de passe</label>
-                                <Field type="password" name="password" className="align-self-center" autocomplete="current-password" style={{ width: "80%" }} />
-                                <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
+                                <label htmlFor="password" ><h5>Mot de passe</h5></label>
+                                <Field type="password" name="password" className="align-self-center w-80" autocomplete="current-password" />
+                                <ErrorMessage name="password" component="div" className="error" />
                             </div>
 
                             <button type="submit" className="submit-button">Valider</button>

@@ -18,7 +18,7 @@ export default class NavbarNotLogin extends React.Component {
                             </ul>
                         </li>
                         <li>
-                            <Link to={`/videogames/dota2/leagues/1`}>Dota 2</Link>
+                            <Link to={`/videogames/dota-2/leagues/1`}>Dota 2</Link>
                             <ul>
                                 <li><Link to={`/videogames/dota-2/leagues/1`}>Leagues</Link></li>
                                 <li><Link to={`/dota2/heroes/1`}>Héros</Link></li>

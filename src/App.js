@@ -10,6 +10,7 @@ import TeamInfo from './components/videogames/TeamInfo';
 import MatchInfo from './components/videogames/MatchInfo';
 import ChampionsList from './components/videogames/ChampionsList';
 import Login from './components/user/Login';
+import Logout from './components/user/Logout';
 import Home from './components/user/Home';
 import Profile from './components/user/Profile';
 import Register from './components/user/Register';
@@ -28,9 +29,10 @@ export default function App() {
                 <Route path="/:slug/champions/:page" element={<ChampionsList />} />
                 <Route path="/:slug/heroes/:page" element={<ChampionsList />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/user/homepage" element={<Home />} />
                 <Route path="/user/profile" element={<Profile />} />
-                <Route path="/user/register" element={<Register />} />
             </Routes>
         </>
     )

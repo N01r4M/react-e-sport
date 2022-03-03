@@ -24,3 +24,15 @@ export class BetButton extends React.Component {
         );
     }
 }
+
+export class SubmitButton extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <btn className="submit-button" type={this.props.type}>{this.props.txt}</btn>
+        );
+    }
+}

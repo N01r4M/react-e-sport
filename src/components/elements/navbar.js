@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 
 export default class NavbarNotLogin extends React.Component {
+    
     render() {
         return (
             <>
@@ -23,8 +24,11 @@ export default class NavbarNotLogin extends React.Component {
                                 <li><Link to={`/dota2/heroes/1`}>Héros</Link></li>
                             </ul>
                         </li>
+
                         <li className="ms-auto">
-                            <Link to={`/login`}>Se connecter</Link>
+                            {
+                                sessionStorage.getItem('token') === null ? <Link to={`/login`}>Se connecter</Link> : <Link to={`/logout`}>Se déconnecter</Link>
+                            }
                         </li>
                     </ul>
                 </nav>

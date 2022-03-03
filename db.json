@@ -1,16 +1,28 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "username": "user",
-            "password": "1234",
-            "coins": 100
-        },
-        {
-            "id": 2,
-            "username": "user2",
-            "password": "1234",
-            "coins": 100
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Jean",
+      "username": "jean",
+      "password": "$2a$10$J2y5nqriiGsVcwSt.D0o/OArUmhR5.3X3SfiIrMlO/5lmv5HRCQX6",
+      "email": "jean@mail.fr",
+      "coins": 100
+    },
+    {
+      "id": 2,
+      "firstName": "Axel",
+      "username": "axel",
+      "password": "$2a$10$J2y5nqriiGsVcwSt.D0o/OArUmhR5.3X3SfiIrMlO/5lmv5HRCQX6",
+      "email": "axel@mail.fr",
+      "coins": 100
+    },
+    {
+      "email": "lana@mail.fr",
+      "password": "$2a$10$GIBmzhdL.rm.lzqUaNXiDezynrPegOZ/X9s.lNNpmhDPKT.w.C0ji",
+      "username": "lana",
+      "firstName": "Lana",
+      "coins": 100,
+      "id": 3
+    }
+  ]
 }

@@ -9,8 +9,8 @@ $grey-d-40: mix($black, $bg, 40%);
 
 
 $primary: #18b08a;
+$secondary: #D8D841;
 $error: #FF5C5C;
-$yellow: #D8D841;
 
 $primary-d-5: mix($black, $primary, 5%);
 $primary-d-15: mix($black, $primary, 15%);
@@ -153,6 +153,7 @@ div {
         display: flex;
         word-wrap: break-word;
         flex-wrap: wrap;
+        flex-direction: column;
         align-content: space-around;
         min-width: 0;
         background-clip: border-box;
@@ -419,5 +420,5 @@ div {
 }
 
 .icoins {
-    color: $yellow;
+    color: $secondary;
 }

@@ -162,7 +162,7 @@ export class TeamCard extends React.Component {
 
     render() {
         return (
-            <div key={this.props.team.id} className="card shadow rounded">
+            <div key={this.props.team.id} className="card-elmt shadow rounded">
                 <img src={this.props.team.image_url} className="card-img-top" alt="Logo team" />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.team.name}</h5>

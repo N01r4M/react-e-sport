@@ -12,6 +12,7 @@ export default class LeagueCard extends React.Component {
             fav: this.props.fav
         }
     }
+
     
     render() {
         return (
@@ -97,7 +98,14 @@ export class MatchCard extends React.Component {
                 />
 
                 {
-                    this.props.match.status === 'not_started' && <BetButton />
+                    (this.props.match.status === 'not_started' && this.props.isConnected) && 
+                    <BetButton 
+                        coins={this.props.coins} 
+                        team1={this.props.match.opponents.length !== 0 && this.props.match.opponents[0].opponent}
+                        team2={(this.props.match.opponents.length !== 0 && this.props.match.opponents.length === 2) && this.props.match.opponents[1].opponent}
+                        match={this.props.match.id}
+                        idUser={parseInt(this.props.idUser)}
+                    />
                 }
 
                 {
@@ -125,7 +133,7 @@ export class SmallMatchCard extends React.Component {
                 />
 
                 {
-                    this.props.match.status === "not_started" && <BetButton />
+                    (this.props.match.status === 'not_started' && this.props.isConnected) && <BetButton />
                 }
 
                 {
@@ -162,7 +170,7 @@ export class TeamCard extends React.Component {
 
     render() {
         return (
-            <div key={this.props.team.id} className="card-elmt shadow rounded">
+            <div key={this.props.team.id} className="card-elmt column shadow rounded">
                 <img src={this.props.team.image_url} className="card-img-top" alt="Logo team" />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.team.name}</h5>

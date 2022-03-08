@@ -51,10 +51,6 @@ export default class NavbarEparis extends React.Component {
                                 <li><Link to={`/dota2/heroes/1`}>Héros</Link></li>
                             </ul>
                         </li>
-                        
-                        {
-                            this.login && <li><Link to={`/user/profile`}>Mon profil</Link></li>
-                        }
 
                         {
                             this.login && <li className="ms-auto d-flex flex-wrap align-content-center" style={{ paddingRight: '1.7rem' }}><h5 style={{ padding: '0 .8rem' }}>{this.state.coins}</h5> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-coin icoins" viewBox="0 0 16 16">

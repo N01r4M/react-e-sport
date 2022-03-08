@@ -6,7 +6,7 @@
       "username": "jean",
       "password": "$2a$10$J2y5nqriiGsVcwSt.D0o/OArUmhR5.3X3SfiIrMlO/5lmv5HRCQX6",
       "email": "jean@mail.fr",
-      "coins": 100
+      "coins": 80
     },
     {
       "id": 2,
@@ -50,6 +50,30 @@
       "idUser": 1,
       "idLeague": 4118,
       "id": 5
+    },
+    {
+      "idUser": 1,
+      "idLeague": 4539,
+      "id": 6
+    },
+    {
+      "idUser": 1,
+      "idLeague": 4198,
+      "id": 7
+    },
+    {
+      "idUser": 1,
+      "idLeague": 294,
+      "id": 8
+    }
+  ],
+  "bets": [
+    {
+      "idUser": 1,
+      "idTeam": 126370,
+      "idMatch": 616089,
+      "coins": 20,
+      "id": 1
     }
   ]
 }

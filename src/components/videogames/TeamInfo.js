@@ -13,7 +13,8 @@ export default function TeamInfo() {
             [players, setPlayers] = useState([]),
             [pastMatches, setPastMatches] = useState([]),
             [runningMatches, setRunningMatches] = useState([]),
-            [upcomingMatches, setUpcomingMatches] = useState([])
+            [upcomingMatches, setUpcomingMatches] = useState([]),
+            isConnected = sessionStorage.getItem('token') === null ? false : true
 
     let matches = {}
 
@@ -67,7 +68,10 @@ export default function TeamInfo() {
             <div className="group-matches" key={dateGroup}>
                 {
                     matches[dateGroup].map(match => {
-                        return <SmallMatchCard match={match} />
+                        return <SmallMatchCard 
+                            match={match}
+                            isConnected={isConnected}
+                        />
                     })
                 }
             </div>

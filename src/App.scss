@@ -153,7 +153,6 @@ div {
         display: flex;
         word-wrap: break-word;
         flex-wrap: wrap;
-        flex-direction: column;
         align-content: space-around;
         min-width: 0;
         background-clip: border-box;
@@ -168,6 +167,10 @@ div {
             margin: auto;
             text-align: center;
             padding-bottom: 1rem;
+        }
+
+        &.column {
+            flex-direction: column;
         }
     }
 
@@ -421,4 +424,8 @@ div {
 
 .icoins {
     color: $secondary;
+}
+
+.modal-content {
+    background-color: $bg !important;
 }

@@ -5,16 +5,39 @@ import { MatchCard } from "../elements/Card";
 import LoadingPage from "../LoadingPage";
 import { formatDate } from "../functions/formatsDateTime";
 import BgLogo from "../elements/Background";
+import apiDB from "../../apiDB";
 
 export default function LeagueSchedule() {
     const   { id } = useParams(),
             [loading, setLoading] = useState(false),
+            [coins, setCoins] = useState(null),
             [serie, setSerie] = useState({}),
             [pastMatches, setPastMatches] = useState([]),
             [runningMatches, setRunningMatches] = useState([]),
-            [upcomingMatches, setUpcomingMatches] = useState([])
+            [upcomingMatches, setUpcomingMatches] = useState([]),
+            isConnected = sessionStorage.getItem('token') === null ? false : true
 
     let matches = {}
+
+    const parseJWT = (token) => {
+        if (!token) { return; }
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64)).sub;
+    }
+
+    const idUser = parseJWT(sessionStorage.getItem('token'))
+
+    const getUser = () => {
+        apiDB.get(`/users/${idUser}`)
+        .then(res => {
+            setCoins(res.data.coins);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
 
     const getMatches = (data) => {
         apiPs.get(`/series/${data.id}/matches/past?sort=-begin_at`)
@@ -70,6 +93,9 @@ export default function LeagueSchedule() {
                     matches[dateGroup].map(match => {
                         return <MatchCard 
                             match={match}
+                            isConnected={isConnected}
+                            coins={coins}
+                            idUser={idUser}
                         />
                     })
                 }
@@ -96,6 +122,7 @@ export default function LeagueSchedule() {
                         console.log(err)
                     })
             }
+            isConnected && getUser()
         })
         .catch(err => {
             console.log(err)

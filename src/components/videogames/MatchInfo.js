@@ -1,6 +1,4 @@
 import { useLocation } from "react-router-dom";
-import Score from "../elements/Score";
-import TeamDiv from "../elements/TeamDiv";
 import formatHour from "../functions/formatsDateTime";
 
 export default function MatchInfo(props) {
@@ -75,8 +73,8 @@ export default function MatchInfo(props) {
             <div>
                 <iframe
                     src={match.live_embed_url && match.live_embed_url.concat('', "&parent=localhost&autoplay=true&muted=true")}
-                    height="360"
-                    width="640"
+                    height="720"
+                    width="1280"
                     allowFullScreen={true}>
                 </iframe>
             </div>

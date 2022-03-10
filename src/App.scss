@@ -144,57 +144,94 @@ div {
     flex-wrap: wrap;
     justify-content: center;
 
-    .card-elmt {
+    .card {
         background-color: $bg !important;
         margin: 1rem;
         padding: 1.25rem;
-        width: 17.8rem;
         border: .06rem solid rgba(0,0,0,.1);
         display: flex;
         word-wrap: break-word;
-        flex-wrap: wrap;
-        align-content: space-around;
         min-width: 0;
         background-clip: border-box;
-
-        img {
-            max-height: 6.25rem;
-            max-width: 6.25rem;
-            margin: auto;
+        
+        &.card-elmt {
+            flex-wrap: wrap;
+            align-content: space-around;
+            flex-direction: row;
+            width: 17.8rem;
+    
+            img {
+                max-height: 6.25rem;
+                max-width: 6.25rem;
+                margin: auto;
+            }
+    
+            .card-title {
+                margin: auto;
+                text-align: center;
+                padding-bottom: 1rem;
+            }
+    
+            &.column {
+                flex-direction: column;
+            }
         }
-
-        .card-title {
-            margin: auto;
-            text-align: center;
-            padding-bottom: 1rem;
-        }
-
-        &.column {
+    
+        &.card-heroes {
             flex-direction: column;
-        }
-    }
-
-    .card-heroes {
-        background-color: $bg !important;
-        margin: 1rem;
-        padding: 1.25rem;
-        width: 17.8rem;
-        border: .06rem solid rgba(0,0,0,.1);
-        display: flex;
-        word-wrap: break-word;
-        flex-direction: column;
-        min-width: 0;
-        background-clip: border-box;
-
-        img {
-            max-height: 10rem;
-            max-width: 10rem;
-            margin: auto;
+            width: 17.8rem;
+    
+            img {
+                max-height: 10rem;
+                max-width: 10rem;
+                margin: auto;
+            }
+    
+            .card-title {
+                margin: auto;
+                text-align: center;
+            }
         }
 
-        .card-title {
-            margin: auto;
-            text-align: center;
+        &.card-home {
+            width: 30%;
+
+            .card {
+                margin: auto !important;
+                height: 15.625rem;
+            }
+
+            .carousel {
+                height: 18.75rem;
+                margin-top: 1rem;
+
+                .carousel-inner {
+                    overflow-y: inherit;
+                    height: 100%;
+                }
+
+                .carousel-indicators {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .card-bet {
+            margin: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid $grey-d-20;
+            
+            p {
+                margin: 0;
+            }
+
+            .defeat {
+                color: $error;
+            }
+
+            .win {
+                color: $primary;
+            }
         }
     }
 }

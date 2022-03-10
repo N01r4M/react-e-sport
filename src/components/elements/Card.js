@@ -1,9 +1,11 @@
 import React from "react"
 import apiDB from "../../apiDB";
-import formatHour, { formatDateTime } from "../functions/formatsDateTime";
+import formatHour, { formatDate, formatDateTime } from "../functions/formatsDateTime";
 import isSameDay from "../functions/isSameDay";
 import LinkButton, { BetButton } from "./Button";
-import TeamScore from "./TeamsScore";
+import Coins from "./Coins";
+import Score from "./Score";
+import TeamScore, { SmallTeamScore } from "./TeamsScore";
 
 export default class LeagueCard extends React.Component {
     constructor(props) {
@@ -16,7 +18,7 @@ export default class LeagueCard extends React.Component {
     
     render() {
         return (
-            <div key={this.props.league.id} className="card-elmt shadow rounded">
+            <div key={this.props.league.id} className="card card-elmt shadow rounded">
                 <img src={this.props.league.image_url} className="card-img-top" alt="Logo league" />
                 {
                     this.state.fav ? <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-suit-heart-fill icon" viewBox="0 0 16 16" onClick={
@@ -51,7 +53,7 @@ export default class LeagueCard extends React.Component {
                         () => {
                             apiDB.post(`/favLeagues`, {
                                 "idUser": parseInt(this.props.idUser),
-                                "idLeague": parseInt(this.props.league.id)
+                                "league": this.props.league
                             })
                             .then(res => {
                                 const status = JSON.stringify(res.status)
@@ -103,7 +105,7 @@ export class MatchCard extends React.Component {
                         coins={this.props.coins} 
                         team1={this.props.match.opponents.length !== 0 && this.props.match.opponents[0].opponent}
                         team2={(this.props.match.opponents.length !== 0 && this.props.match.opponents.length === 2) && this.props.match.opponents[1].opponent}
-                        match={this.props.match.id}
+                        match={this.props.match}
                         idUser={parseInt(this.props.idUser)}
                     />
                 }
@@ -144,6 +146,44 @@ export class SmallMatchCard extends React.Component {
     }
 } 
 
+export function MatchCardHome(props) {
+    return (
+        <div key={props.match.id} className="card card-elmt shadow rounded">
+            <div className="card-body">
+                <h5 className="mb-3">{props.match.videogame.name} - {props.match.league.name}</h5>
+
+                <SmallTeamScore match={props.match} />
+
+                {
+                    props.match.status === 'not_started' &&
+                    <p className="mt-2">Commence à : {formatHour(props.match.scheduled_at)}</p>
+                }
+
+                <div className="d-flex justify-content-around mt-2">
+                    {
+                        props.match.status === 'not_started' &&
+                        <BetButton
+                            coins={props.coins}
+                            team1={props.match.opponents.length !== 0 && props.match.opponents[0].opponent}
+                            team2={(props.match.opponents.length !== 0 && props.match.opponents.length === 2) && props.match.opponents[1].opponent}
+                            match={props.match}
+                            idUser={parseInt(props.idUser)}
+                        />
+                    }
+
+                    {
+                        props.match.status === 'running' && <LinkButton url={`/matches/${props.match.slug}`} params={props.match} txt="Regarder" />
+                    }
+
+                    {
+                        props.match.status === 'finished' && <Score status={props.match.status} team1={props.match.results[0].score} team2={props.match.results[1].score} />
+                    }
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export class PlayerCard extends React.Component {
     constructor(props) {
         super(props)
@@ -170,7 +210,7 @@ export class TeamCard extends React.Component {
 
     render() {
         return (
-            <div key={this.props.team.id} className="card-elmt column shadow rounded">
+            <div key={this.props.team.id} className="card card-elmt column shadow rounded">
                 <img src={this.props.team.image_url} className="card-img-top" alt="Logo team" />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.team.name}</h5>
@@ -181,4 +221,24 @@ export class TeamCard extends React.Component {
             </div>
         );
     }
+}
+
+export function BetCard(props) {
+    return (
+        <div className="card-bet shadow" key={props.id}>
+            <div>
+                <h6>{props.match.name}</h6>
+                <p>Mise : {props.coins} <Coins size="18" /> sur {props.match.opponents[0].opponent.id === props.idTeam ? props.match.opponents[0].opponent.acronym : props.match.opponents[1].opponent.acronym}</p>
+                {
+                    props.match.status === 'finished' && <p className={props.match.winner_id === props.team ? 'win' : 'defeat'}>{props.match.winner_id === props.team ? `Pari gagné ! Gain : ${props.coins * 2} ${<Coins size="18" />}` : `Perdu ...`}</p>
+                }
+                {
+                    props.match.status === "not_started" && <p>Prévu le {formatDate(props.match.scheduled_at)} à {formatHour(props.match.scheduled_at)}</p>
+                }
+            </div>
+            {
+                props.match.status === "running" && <LinkButton url={`/matches/${props.match.slug}`} params={props.match} txt="Regarder" />
+            }
+        </div>
+    )
 }

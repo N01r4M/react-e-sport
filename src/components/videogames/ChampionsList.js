@@ -51,7 +51,7 @@ export default function ChampionsList() {
                 <div className="list-cards">
                     {
                         champions.map(champion => 
-                            <div key={champion.id} className={slug === 'lol' ? 'card-elmt shadow rounded' : 'card-heroes shadow rounded'}>
+                            <div key={champion.id} className={slug === 'lol' ? 'card card-elmt shadow rounded' : 'card-heroes shadow rounded'}>
                                 <img src={champion.image_url} className="card-img-top" alt="Image champion" />
                                 <div className="card-body">
                                     <h5 className="card-title">{champion.name}</h5>

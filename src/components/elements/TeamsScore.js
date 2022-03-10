@@ -1,12 +1,12 @@
 import React from "react";
-import TeamDiv from "../elements/TeamDiv";
+import TeamDiv, { SmallTeamDiv } from "../elements/TeamDiv";
 import Score from "./Score";
 
 export default class TeamScore extends React.Component {
     constructor(props) {
         super(props)
     }
-    
+
     render() {
         return (
             <div className="teams-score">
@@ -36,4 +36,34 @@ export default class TeamScore extends React.Component {
             </div>
         );
     }
-}
+} 
+
+export function SmallTeamScore(props) {
+    return (
+        <div className="teams-score" style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center'
+        }}>
+            {
+                props.match.opponents.length !== 0 && <SmallTeamDiv
+                    matchStatus={props.match.status}
+                    winner={props.match.winner_id}
+                    team={props.match.opponents[0].opponent}
+                    left={true}
+                />
+            }
+
+            <p>VS</p>
+
+            {
+                props.match.opponents.length !== 0 && <SmallTeamDiv
+                    matchStatus={props.match.status}
+                    winner={props.match.winner_id}
+                    team={props.match.opponents[1].opponent}
+                    left={false}
+                />
+            }
+        </div>
+    );
+}   

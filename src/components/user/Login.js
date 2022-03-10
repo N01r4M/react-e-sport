@@ -1,9 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react"
+import { Navigate } from "react-router-dom"
 import apiDB from "../../apiDB";
 import { BigLinkButton } from "../elements/Button";
 
-export default function Login() {
+export default function Login(props) {
+    if (props.login) {
+        return <Navigate to={`/`} state={{ coins: props.coins, idUser: props.idUser }} replace={true} />
+    }
+
     return (
         <>
             <BigLinkButton url={`/register`} txt="Rejoins la communauté des e-parieurs !" />
@@ -36,11 +41,13 @@ export default function Login() {
                         })
                             .then(res => {
                                 const   status = JSON.stringify(res.status),
-                                        token = JSON.stringify(res.data.accessToken)
+                                        token = JSON.stringify(res.data.accessToken),
+                                        coins = JSON.stringify(res.data.user.coins),
+                                        idUser = JSON.stringify(res.data.user.id)
                                     
                                 if (status === '200') {
                                     sessionStorage.setItem('token', token)
-                                    window.location.replace("http://localhost:3001/user/homepage")
+                                    window.location.reload()
                                 } else {
                                     console.log(`Status HTTP : ${status}`)                                    
                                 }

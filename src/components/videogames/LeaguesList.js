@@ -51,7 +51,7 @@ class LeaguesList extends React.Component {
         apiDB.get(`/favLeagues?idUser=${this.idUser}`)
             .then(res => {
                 res.data.map(elmt => {
-                    this.setState({ favLeagues: [...this.state.favLeagues, elmt.idLeague] });
+                    this.setState({ favLeagues: [...this.state.favLeagues, elmt.league.id] });
                 })
             })
             .catch(err => {

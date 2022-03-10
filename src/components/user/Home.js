@@ -90,7 +90,7 @@ export default function Home() {
                 <h1>Accueil</h1>
 
                 <div className="list-cards">
-                    <div className="card card-home shadow rounded justify-content-center">
+                    <div className="card card-home shadow rounded">
                         <h2>Tes derniers paris</h2>
                         {
                             bets.map(bet =>

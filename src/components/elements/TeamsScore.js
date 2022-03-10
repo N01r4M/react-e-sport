@@ -13,6 +13,7 @@ export default class TeamScore extends React.Component {
                 {
                     this.props.match.opponents.length !== 0 && <TeamDiv
                         matchStatus={this.props.match.status}
+                        idMatch={this.props.match.id}
                         winner={this.props.match.winner_id}
                         team={this.props.match.opponents[0].opponent}
                         left={true}
@@ -28,6 +29,7 @@ export default class TeamScore extends React.Component {
                 {
                     this.props.match.opponents.length !== 0 && <TeamDiv
                         matchStatus={this.props.match.status}
+                        idMatch={this.props.match.id}
                         winner={this.props.match.winner_id}
                         team={this.props.match.opponents[1].opponent}
                         left={false}

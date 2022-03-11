@@ -3,6 +3,8 @@ import React from "react"
 import { Navigate } from "react-router-dom"
 import apiDB from "../../apiDB";
 import { BigLinkButton } from "../elements/Button";
+import formatDate from "../functions/formatsDateTime";
+import isSameDay from "../functions/isSameDay";
 
 export default function Login(props) {
     if (props.login) {
@@ -43,11 +45,26 @@ export default function Login(props) {
                                 const   status = JSON.stringify(res.status),
                                         token = JSON.stringify(res.data.accessToken),
                                         coins = JSON.stringify(res.data.user.coins),
-                                        idUser = JSON.stringify(res.data.user.id)
+                                        id = JSON.stringify(res.data.user.id),
+                                        lastLogInAt = res.data.user.lastLogInAt
                                     
                                 if (status === '200') {
-                                    sessionStorage.setItem('token', token)
-                                    window.location.reload()
+                                    if (!isSameDay(new Date(lastLogInAt), new Date())) {
+                                        apiDB.patch(`/users/${id}`, {
+                                            "coins": parseInt(coins) + 10,
+                                            "lastLogInAt": new Date()
+                                        })
+                                        .then(res => {
+                                            sessionStorage.setItem('token', token)
+                                            window.location.reload()
+                                        })
+                                        .catch(err => {
+                                            console.log(err);
+                                        })
+                                    } else {
+                                        sessionStorage.setItem('token', token)
+                                        window.location.reload()
+                                    }
                                 } else {
                                     console.log(`Status HTTP : ${status}`)                                    
                                 }

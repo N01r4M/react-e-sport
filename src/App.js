@@ -51,7 +51,7 @@ export default function App() {
                 <Route path="/:slug/heroes/:page" element={<ChampionsList />} />
                 <Route path="/login" element={<Login idUser={idUser} login={login} coins={coins} />} />
                 <Route path="/logout" element={<Logout />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/register" element={<Register idUser={idUser} login={login} coins={coins} />} />
             </Routes>
         </>
     )

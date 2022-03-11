@@ -94,7 +94,7 @@ export default function Home() {
                         <h2>Tes derniers paris</h2>
                         {
                             bets.map(bet =>
-                                <BetCard coins={bet.coins} team={bet.idTeam} match={bet.match} id={bet.id} />
+                                <BetCard coins={bet.coins} team={bet.idTeam} match={bet.match} id={bet.id} idUser={idUser} />
                             )
                         }
                     </div>

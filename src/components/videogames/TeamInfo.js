@@ -6,7 +6,7 @@ import { SmallMatchCard } from "../elements/Card";
 import { PlayerCard } from "../elements/Card";
 import LoadingPage from "../LoadingPage";
 
-export default function TeamInfo() {
+export default function TeamInfo(props) {
     const   { slug } = useParams(),
             [loading, setLoading] = useState(false),
             [team, setTeam] = useState({}),
@@ -14,9 +14,11 @@ export default function TeamInfo() {
             [pastMatches, setPastMatches] = useState([]),
             [runningMatches, setRunningMatches] = useState([]),
             [upcomingMatches, setUpcomingMatches] = useState([]),
-            isConnected = sessionStorage.getItem('token') === null ? false : true
+            isConnected = sessionStorage.getItem('token') === null ? false : true,
+            idUser = props.idUser
 
     let matches = {}
+
 
     
     const getMatches = (data) => {
@@ -71,6 +73,7 @@ export default function TeamInfo() {
                         return <SmallMatchCard 
                             match={match}
                             isConnected={isConnected}
+                            idUser={idUser}
                         />
                     })
                 }

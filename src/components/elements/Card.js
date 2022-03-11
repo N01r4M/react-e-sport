@@ -88,6 +88,7 @@ export class MatchCard extends React.Component {
         super(props)
     }
 
+    
     render() {
         return (
             <div className={`match-card ${isSameDay(new Date(this.props.match.scheduled_at), new Date()) && ' border-today'}`} key={this.props.match.id}>
@@ -111,7 +112,7 @@ export class MatchCard extends React.Component {
                 }
 
                 {
-                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} params={this.props.match} txt="Regarder" />
+                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} params={{ match: this.props.match, idUser: this.props.idUser}} txt="Regarder" />
                 }
             </div>
         );
@@ -122,7 +123,7 @@ export class SmallMatchCard extends React.Component {
     constructor(props) {
         super(props)
     }
-
+    
     render() {
         return (
             <div className={`match-card small-card ${isSameDay(new Date(this.props.match.scheduled_at), new Date()) && ' border-today'}`} key={this.props.match.id}>
@@ -135,11 +136,14 @@ export class SmallMatchCard extends React.Component {
                 />
 
                 {
-                    (this.props.match.status === 'not_started' && this.props.isConnected) && <BetButton />
+                    (this.props.match.status === 'not_started' && this.props.isConnected) && <BetButton 
+                        idUser={this.props.idUser}
+                        match={this.props.match}
+                    />
                 }
 
                 {
-                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} params={this.props.match} txt="Regarder" />
+                    this.props.match.status === 'running' && <LinkButton url={`/matches/${this.props.match.slug}`} params={{ match: this.props.match, idUser: this.props.idUser }} txt="Regarder" />
                 }
             </div>
         );
@@ -172,7 +176,7 @@ export function MatchCardHome(props) {
                     }
 
                     {
-                        props.match.status === 'running' && <LinkButton url={`/matches/${props.match.slug}`} params={props.match} txt="Regarder" />
+                        props.match.status === 'running' && <LinkButton url={`/matches/${props.match.slug}`} params={{ match: props.match, idUser: props.idUser }} txt="Regarder" />
                     }
 
                     {
@@ -230,14 +234,14 @@ export function BetCard(props) {
                 <h6>{props.match.name}</h6>
                 <p>Mise : {props.coins} <Coins size="18" /> sur {props.match.opponents[0].opponent.id === props.idTeam ? props.match.opponents[0].opponent.acronym : props.match.opponents[1].opponent.acronym}</p>
                 {
-                    props.match.status === 'finished' && <p className={props.match.winner_id === props.team ? 'win' : 'defeat'}>{props.match.winner_id === props.team ? `Pari gagné ! Gain : ${props.coins * 2} ${<Coins size="18" />}` : `Perdu ...`}</p>
+                    props.match.status === 'finished' && <p className={`${props.match.winner_id === props.team ? 'win' : 'defeat'}`}>{props.match.winner_id === props.team ? `Pari gagné ! Gain : ${props.coins * 2} ${<Coins size="18" />}` : `Perdu ...`}</p>
                 }
                 {
                     props.match.status === "not_started" && <p>Prévu le {formatDate(props.match.scheduled_at)} à {formatHour(props.match.scheduled_at)}</p>
                 }
             </div>
             {
-                props.match.status === "running" && <LinkButton url={`/matches/${props.match.slug}`} params={props.match} txt="Regarder" />
+                props.match.status === "running" && <LinkButton url={`/matches/${props.match.slug}`} params={{ match: props.match, idUser: props.idUser, right: true }} txt="Regarder" />
             }
         </div>
     )

@@ -45,7 +45,7 @@ export default function App() {
                 <Route path="/videogames/:slug/leagues/:page" element={<LeaguesList />} />
                 <Route path="/leagues/:id/schedule" element={<LeagueSchedule />} />
                 <Route path="/leagues/:id/teams" element={<LeagueTeams />} />
-                <Route path="/teams/:slug" element={<TeamInfo />} />
+                <Route path="/teams/:slug" element={<TeamInfo idUser={idUser} />} />
                 <Route path="/matches/:slug" element={<MatchInfo />} />
                 <Route path="/:slug/champions/:page" element={<ChampionsList />} />
                 <Route path="/:slug/heroes/:page" element={<ChampionsList />} />

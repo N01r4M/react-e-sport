@@ -34,7 +34,9 @@ export class BetButton extends React.Component {
         super(props)
 
         this.state={
-            show: false
+            show: false,
+            coins1: 0,
+            coins2: 0
         }
 
         this.handleClose = () => this.setState({ show: false });
@@ -52,10 +54,8 @@ export class BetButton extends React.Component {
             console.log(err);
         })
     }
-
     
     render() {
-        //console.log(this.props);
         return (
             <>
                 <btn className="button" onClick={this.handleShow}>Parier</btn>

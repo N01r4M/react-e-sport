@@ -234,7 +234,7 @@ export function BetCard(props) {
                 <h6>{props.match.name}</h6>
                 <p>Mise : {props.coins} <Coins size="18" /> sur {props.match.opponents[0].opponent.id === props.idTeam ? props.match.opponents[0].opponent.acronym : props.match.opponents[1].opponent.acronym}</p>
                 {
-                    props.match.status === 'finished' && <p className={`${props.match.winner_id === props.team ? 'win' : 'defeat'}`}>{props.match.winner_id === props.team ? `Pari gagné ! Gain : ${props.coins * 2} ${<Coins size="18" />}` : `Perdu ...`}</p>
+                    props.match.status === 'finished' && <p className={`${props.match.winner_id === props.team ? 'win' : 'defeat'}`}>{props.match.winner_id === props.team ? `Pari gagné ! Gain : ${props.coins * 2}` : `Perdu ...`} {props.match.winner_id === props.team && <Coins size="18" />}</p>
                 }
                 {
                     props.match.status === "not_started" && <p>Prévu le {formatDate(props.match.scheduled_at)} à {formatHour(props.match.scheduled_at)}</p>

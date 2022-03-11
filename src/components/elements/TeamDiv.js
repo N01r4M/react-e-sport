@@ -39,15 +39,8 @@ export default class TeamDiv extends React.Component {
 
 export function SmallTeamDiv(props) {
     return (
-        <div className={`team ${props.left ? 'ta-left' : 'ta-right'} ${props.left && 'fd-reverse'} ${(props.matchStatus !== 'finished' || props.winner === props.team.id) ? '' : 'loser'}`} style={{
-            display: "flex",
-            flexDirection: 'column',
-            alignItems: 'center'
-        }} >
-            <img src={props.team.image_url} className={props.matchStatus && 'running-match'} style={{
-                maxMidth: '5rem',
-                maxHeight: '5rem'
-            }} />
+        <div className={`team d-flex flex-column align-items-center ${props.left ? 'ta-left' : 'ta-right'} ${props.left && 'fd-reverse'} ${(props.matchStatus !== 'finished' || props.winner === props.team.id) ? '' : 'loser'}`}>
+            <img src={props.team.image_url} className={`mw-5 mh-5 ${props.matchStatus && 'running-match'}`} />
             <div className={props.left ? 'pad-right' : 'pad-left'} >
                 <h6>{props.team.acronym}</h6>
             </div>

@@ -48,35 +48,15 @@ export default function MatchInfo(props) {
 
     return (
         <div 
-            className="d-flex justify-content-around align-items-center" 
-            style={{
-                minHeight: "calc(100vh - 3.75rem)"
-            }}
-        >
+            className="d-flex justify-content-around align-items-center mh-calc">
             <div>
-                <div
-                    style={{
-                        boxShadow: "inset 0 .625rem 1.25rem rgba(0,0,0,.2)",
-                        padding: ".8rem",
-                        margin: "1rem 0"
-                    }}
-                >
+                <div className="div-info">
                     <h2>Informations sur le match</h2>
-                    <div style={{
-                        display: "flex",
-                        justifyContent: "space-evenly",
-                        alignItems: "center"
-                    }}>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center"
-                        }}>
+                    <div className="d-flex justify-content-evenly align-items-center" >
+                        <div className="d-flex flex-column align-items-center" >
                             <img
                                 src={match.opponents[0].opponent.image_url}
-                                style={{
-                                    height: "3.125rem"
-                                }}
+                                className="h-3-125"
                             />
                             <p>{match.opponents[0].opponent.acronym}</p>
                             <p>Total paris : {coins1} <Coins size="18" /></p>
@@ -84,16 +64,10 @@ export default function MatchInfo(props) {
 
                         <h3>{match.results[0].score} - {match.results[1].score}</h3>
 
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center"
-                        }}>
+                        <div className="d-flex flex-column align-items-center">
                             <img
                                 src={match.opponents[1].opponent.image_url}
-                                style={{
-                                    height: "3.125rem"
-                                }}
+                                className="h-3-125"
                             />
                             <p>{match.opponents[1].opponent.acronym}</p>
                             <p>Total paris : {coins2} <Coins size="18" /></p>
@@ -113,8 +87,8 @@ export default function MatchInfo(props) {
             <div>
                 <iframe
                     src={match.live_embed_url && match.live_embed_url.concat('', "&parent=localhost&autoplay=true&muted=true")}
-                    height="720"
-                    width="1280"
+                    height="540"
+                    width="960"
                     allowFullScreen={true}>
                 </iframe>
             </div>

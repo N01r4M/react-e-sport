@@ -42,11 +42,7 @@ export default class TeamScore extends React.Component {
 
 export function SmallTeamScore(props) {
     return (
-        <div className="teams-score" style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center'
-        }}>
+        <div className="teams-score d-flex justify-content-around align-items-center">
             {
                 props.match.opponents.length !== 0 && <SmallTeamDiv
                     matchStatus={props.match.status}

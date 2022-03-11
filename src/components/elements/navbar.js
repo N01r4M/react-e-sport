@@ -31,7 +31,7 @@ export default class NavbarEparis extends React.Component {
                         </li>
 
                         {
-                            this.props.login && <li className="ms-auto d-flex flex-wrap align-content-center" style={{ paddingRight: '1.7rem' }}><h5 style={{ padding: '0 .8rem' }}>{this.props.coins}</h5> <Coins size="25" /></li>
+                            this.props.login && <li className="ms-auto d-flex flex-wrap align-content-center pr-1-7"><h5 className="p-0-8">{this.props.coins}</h5> <Coins size="25" /></li>
                         }
 
                         <li className={!this.props.login && 'ms-auto'}>

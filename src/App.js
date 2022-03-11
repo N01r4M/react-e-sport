@@ -42,8 +42,8 @@ export default function App() {
             <NavbarEparis idUser={idUser} login={login} coins={coins} />
             <Routes>
                 <Route path="/" element={login ? <Home idUser={idUser} coins={coins} /> : <Homepage />} />
-                <Route path="/videogames/:slug/leagues/:page" element={<LeaguesList />} />
-                <Route path="/leagues/:id/schedule" element={<LeagueSchedule />} />
+                <Route path="/videogames/:slug/leagues/:page" element={<LeaguesList idUser={idUser} />} />
+                <Route path="/leagues/:id/schedule" element={<LeagueSchedule idUser={idUser} />} />
                 <Route path="/leagues/:id/teams" element={<LeagueTeams />} />
                 <Route path="/teams/:slug" element={<TeamInfo idUser={idUser} />} />
                 <Route path="/matches/:slug" element={<MatchInfo />} />

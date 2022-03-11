@@ -179,25 +179,19 @@ export class BetButton extends React.Component {
                                 <Form>
                                     <div className="mb-3 d-flex justify-content-evenly">
                                         <div className="mb-3 d-flex flex-column align-items-center ">
-                                            <img src={this.props.team1.image_url} style={{
-                                                width: '100px',
-                                                height: '100px'
-                                            }} />
+                                            <img src={this.props.team1.image_url} className="w-100-px h-100-px" />
                                             <label htmlFor="betTeam1">{this.props.team1.name}</label>
                                             <div>
-                                                <Field type="number" name="betTeam1" className="align-self-center" style={{ width: '70px', marginRight: '.3rem' }} /><Coins size="22" />
+                                                <Field type="number" name="betTeam1" className="align-self-center field-bet" /><Coins size="22" />
                                             </div>
                                             <ErrorMessage name="betTeam1" component="div" className="error" />
                                         </div>
 
                                         <div className="mb-3 d-flex flex-column align-items-center">
-                                            <img src={this.props.team2.image_url} style={{
-                                                width: '100px',
-                                                height: '100px'
-                                            }} />
+                                            <img src={this.props.team2.image_url} className="w-100-px h-100-px" />
                                             <label htmlFor="betTeam1">{this.props.team2.name}</label>
                                             <div>
-                                                <Field type="number" name="betTeam2" className="align-self-center" style={{ width: '70px', marginRight: '.3rem' }} /><Coins size="22" />
+                                                <Field type="number" name="betTeam2" className="align-self-center field-bet" /><Coins size="22" />
                                             </div>
                                             <ErrorMessage name="betTeam2" component="div" className="error" />
                                         </div>

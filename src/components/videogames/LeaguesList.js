@@ -16,14 +16,7 @@ class LeaguesList extends React.Component {
         this.slug = props.params.slug
         this.page = parseInt(props.params.page)
 
-        this.parseJWT = (token) => {
-            if (!token) { return; }
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace('-', '+').replace('_', '/');
-            return JSON.parse(window.atob(base64)).sub;
-        }
-
-        this.idUser = this.parseJWT(sessionStorage.getItem('token'))
+        this.idUser = this.props.idUser
     }
 
     getData = () => {

@@ -7,26 +7,19 @@ import { formatDate } from "../functions/formatsDateTime";
 import BgLogo from "../elements/Background";
 import apiDB from "../../apiDB";
 
-export default function LeagueSchedule() {
+export default function LeagueSchedule(props) {
     const   { id } = useParams(),
             [loading, setLoading] = useState(false),
             [coins, setCoins] = useState(null),
             [serie, setSerie] = useState({}),
+            [show, setShow] = useState('past'),
             [pastMatches, setPastMatches] = useState([]),
             [runningMatches, setRunningMatches] = useState([]),
             [upcomingMatches, setUpcomingMatches] = useState([]),
-            isConnected = sessionStorage.getItem('token') === null ? false : true
+            isConnected = sessionStorage.getItem('token') === null ? false : true,
+            idUser = props.idUser
 
     let matches = {}
-
-    const parseJWT = (token) => {
-        if (!token) { return; }
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64)).sub;
-    }
-
-    const idUser = parseJWT(sessionStorage.getItem('token'))
 
     const getUser = () => {
         apiDB.get(`/users/${idUser}`)
@@ -37,7 +30,6 @@ export default function LeagueSchedule() {
             console.log(err);
         })
     }
-
 
     const getMatches = (data) => {
         apiPs.get(`/series/${data.id}/matches/past?sort=-begin_at`)
@@ -127,9 +119,9 @@ export default function LeagueSchedule() {
         .catch(err => {
             console.log(err)
         })
-
         setLoading(false)
     }, [])
+
 
     if (!loading) {
         if (serie && Object.keys(serie).length === 0 && Object.getPrototypeOf(serie) === Object.prototype) {

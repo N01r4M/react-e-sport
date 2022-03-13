@@ -3,7 +3,6 @@ import React from "react"
 import { Navigate } from "react-router-dom"
 import apiDB from "../../apiDB";
 import { BigLinkButton } from "../elements/Button";
-import formatDate from "../functions/formatsDateTime";
 import isSameDay from "../functions/isSameDay";
 
 export default function Login(props) {

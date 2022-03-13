@@ -5,6 +5,8 @@ import LoadingPage from "../LoadingPage";
 import LeagueCard from "../elements/Card";
 import PaginationBar from "../elements/Pagination";
 import apiDB from "../../apiDB";
+import { Field, Form, Formik } from "formik";
+import apiPS from "../../apiPS";
 
 
 class LeaguesList extends React.Component {
@@ -58,7 +60,7 @@ class LeaguesList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.params.slug !== prevProps.params.slug) {
+        if (this.props.params.slug !== prevProps.params.slug || this.props.params.page !== prevProps.params.page) {
             delete this.state.videogame
             delete this.state.nbPages
             delete this.state.leagues
@@ -67,7 +69,7 @@ class LeaguesList extends React.Component {
             this.page = parseInt(this.props.params.page)
             
             this.getData()
-        sessionStorage.getItem('token') !== null && this.getFav()
+            sessionStorage.getItem('token') !== null && this.getFav()
         }
     }
 
@@ -76,8 +78,43 @@ class LeaguesList extends React.Component {
         if ("videogame" in this.state && "leagues" in this.state) {
             return (
                 <>
-                    <h1>{this.state.videogame.name}</h1>
-                    <h2>Liste des leagues</h2>
+                    <div className="d-flex justify-content-between align-items-center p-2">
+                        <div>
+                            <h1>{this.state.videogame.name}</h1>
+                            <h2>Liste des leagues</h2>
+                        </div>
+
+                        <div>
+                            <Formik
+                                initialValues={{ league: "" }}
+                                onSubmit={(values, { setSubmitting }) => {
+                                    if (values.league !== "") {
+                                        apiPS.get(this.slug === 'league-of-legends' ? `/lol/leagues?sort=name&search[name]=${values.league}` : `/dota2/leagues?sort=name&search[name]=${values.league}`)
+                                            .then(res => {
+                                                this.setState({ leagues: res.data })
+                                                this.setState({ nbPages: 0 })
+                                                this.props.params.page = 'search'
+                                            })
+                                            .catch(err => {
+                                                console.log(err);
+                                            })
+                                    } else {
+                                        this.getData()
+                                    }
+                                }}
+                            >
+                                {({ isSubmitting }) => (
+                                    <Form>
+                                        <div className="input-group mb-3">
+                                            <Field type="text" name="league" placehorder="Recherche par nom" />
+
+                                            <button type="submit" className="submit-button">Rechercher</button>
+                                        </div>
+                                    </Form>
+                                )}
+                            </Formik>
+                        </div>
+                    </div>
                     <div className="list-cards">
                         {
                             this.state.leagues.map(league => 
@@ -86,12 +123,14 @@ class LeaguesList extends React.Component {
                         }
                     </div>
 
-                    <div className="d-flex justify-content-center">
-                        <PaginationBar 
-                            nbPages={this.state.nbPages} 
-                            page={this.page} 
-                            url={`/videogames/${this.slug}/leagues/`} />
-                    </div>
+                    {
+                        this.state.nbPages !== 0 && <div className="d-flex justify-content-center">
+                            <PaginationBar
+                                nbPages={this.state.nbPages}
+                                page={this.page}
+                                url={`/videogames/${this.slug}/leagues/`} />
+                        </div>
+                    }
                 </>
             );
         } else {

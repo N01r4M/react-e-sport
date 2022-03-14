@@ -1,3 +1,18 @@
+# Démarrer l'application
+
+## Dans la console : 
+
+- json-server --watch db.json -m ./node_modules/json-server-auth
+- npm run start
+
+# Pour se connecter avec un compte
+
+Tous les comptes ont comme mot de passe : 1234
+
+
+---
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

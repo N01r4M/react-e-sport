@@ -12,6 +12,10 @@ Tous les comptes ont comme mot de passe : 1234
 
 ---
 
+#Objectif de l'application 
+Développé dans le cadre des cours sur React, en L3.
+Consigne : créé un site de paris e-sportifs
+
 
 # Getting Started with Create React App
 
